@@ -1,0 +1,13 @@
+#spring:
+#  cloud:
+#    nacos:
+#      config:
+#        server-addr: 39.101.137.246:8845
+#        namespace: public
+#        username: nacos
+#        password: turing12345
+#        extension-configs:
+#          - dataId: ${spring.application.name}-${spring.profiles.active}.yml
+#            group: DEFAULT_GROUP
+#            refresh: true
+
