@@ -1,29 +1,11 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
 spring:
-  cloud:
-    nacos:
-      config:
-        server-addr: 39.101.137.246:8848
-        namespace: public
-        username: nacos
-        password: turing12345
-        extension-configs:
-          - dataId: ${spring.application.name}-${spring.profiles.active}.yml
-            group: DEFAULT_GROUP
-            refresh: true
-      discovery:
-        server-addr: 39.101.137.246:8848
-        username: nacos
-        password: turing12345
-management:
-  # 加载 actuator 所有的端点（默认只加载 info / health）
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    # 允许关闭端点
-    shutdown:
-      enabled: true
-    # 总是显示检查详细信息
-    health:
-      show-details: always
+  elasticsearch:
+    uris:
+      - http://39.101.137.246:9200
+    username: elastic
+    password: turing12345
+    connection-timeout: 5000

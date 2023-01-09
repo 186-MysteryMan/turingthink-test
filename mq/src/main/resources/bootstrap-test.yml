@@ -1,13 +1,20 @@
-#spring:
-#  cloud:
-#    nacos:
-#      config:
-#        server-addr: 39.101.137.246:8845
-#        namespace: public
-#        username: nacos
-#        password: turing12345
-#        extension-configs:
-#          - dataId: ${spring.application.name}-${spring.profiles.active}.yml
-#            group: DEFAULT_GROUP
-#            refresh: true
-
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: Turing12345!
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://39.101.137.246:3306/annual_assessment?useUnicode=true&characterEncoding=utf-8
+  rabbitmq:
+    host: 39.101.137.246
+    port: 5672
+    username: admin
+    password: turing12345
+swagger:
+  enable: true
+knife4j:
+  enable: true
