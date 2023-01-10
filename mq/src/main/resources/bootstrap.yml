@@ -2,6 +2,6 @@ server:
   port: 8082
 spring:
   application:
-    name: shenggongjie-mq
+    name: mq
   profiles:
     active: test

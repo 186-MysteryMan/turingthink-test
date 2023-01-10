@@ -1,4 +1,4 @@
-package com.turingthink.es;
+package com.turingthink;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
