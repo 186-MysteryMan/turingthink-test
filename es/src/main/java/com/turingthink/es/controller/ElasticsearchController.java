@@ -1,9 +1,9 @@
 package com.turingthink.es.controller;
 
-import com.turingthink.es.controller.vo.RabbitMqVO;
-import com.turingthink.es.service.RabbitMqService;
+import com.turingthink.es.controller.vo.ElasticsearchVO;
+import com.turingthink.es.service.ExampleService;
+import com.turingthink.es.service.dto.ElasticsearchDTO;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,11 +20,12 @@ import java.util.List;
 public class ElasticsearchController {
 
     @Autowired
-    private RabbitMqService rabbitMqService;
+    private ExampleService exampleService;
 
     @GetMapping("/v1/exampleList")
     @ApiOperation(value = "example列表数据")
-    public List<RabbitMqVO.ExampleListVO> exampleList() {
-        return rabbitMqService.exampleList();
+    public List<ElasticsearchVO.ExampleListVO> exampleList() {
+        List<ElasticsearchDTO> list = exampleService.exampleList();
+        return ElasticsearchVO.ExampleListVO.convert(list);
     }
 }

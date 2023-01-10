@@ -1,11 +1,9 @@
 package com.turingthink.es.service;
 
-import com.turingthink.es.controller.vo.RabbitMqVO;
+import com.turingthink.es.service.dto.ElasticsearchDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -22,5 +20,5 @@ public interface RabbitMqService {
      * @return
      */
     @GetMapping("/v1/exampleList")
-    List<RabbitMqVO.ExampleListVO> exampleList();
+    List<ElasticsearchDTO> exampleList();
 }

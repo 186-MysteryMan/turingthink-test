@@ -1,4 +1,4 @@
-package com.turingthink.enums;
+package com.turingthink.es.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

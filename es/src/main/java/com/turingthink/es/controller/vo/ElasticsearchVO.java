@@ -1,11 +1,15 @@
 package com.turingthink.es.controller.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.turingthink.enums.ExampleTypeEnum;
+import com.turingthink.es.enums.ExampleTypeEnum;
+import com.turingthink.es.service.dto.ElasticsearchDTO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author GongJie Sheng
@@ -14,7 +18,7 @@ import java.time.LocalDateTime;
  * @description
  */
 @Data
-public class RabbitMqVO {
+public class ElasticsearchVO {
 
     @Data
     public static class DelayQueueExampleForm {
@@ -56,5 +60,15 @@ public class RabbitMqVO {
 
         @ApiModelProperty(value = "是否删除：默认0=未删除；1=已删除", example = "true")
         private Boolean deleted;
+
+        public static List<ExampleListVO> convert(List<ElasticsearchDTO> rabbitMqList) {
+            List<ExampleListVO> exampleList = new ArrayList<>();
+            for (ElasticsearchDTO elasticsearchDTO : rabbitMqList) {
+                ExampleListVO exampleListVO = new ExampleListVO();
+                BeanUtils.copyProperties(elasticsearchDTO, exampleListVO);
+                exampleList.add(exampleListVO);
+            }
+            return exampleList;
+        }
     }
 }
