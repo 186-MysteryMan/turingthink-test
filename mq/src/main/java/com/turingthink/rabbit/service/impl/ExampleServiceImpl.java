@@ -1,9 +1,7 @@
 package com.turingthink.rabbit.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.turingthink.rabbit.dao.entity.ExampleEntity;
 import com.turingthink.rabbit.dao.mapper.ExampleMapper;
 import com.turingthink.rabbit.service.ExampleService;
@@ -31,5 +29,12 @@ public class ExampleServiceImpl implements ExampleService  {
                 Wrappers.lambdaQuery(ExampleEntity.class).eq(ExampleEntity::getCreator, "盛攻杰");
         List<ExampleEntity> exampleEntities = exampleMapper.selectList(exampleQw);
         return RabbitMqDTO.convert(exampleEntities);
+    }
+
+    @Override
+    public void deleteExample() {
+        LambdaQueryWrapper<ExampleEntity> exampleQw =
+                Wrappers.lambdaQuery(ExampleEntity.class).eq(ExampleEntity::getCreator, "盛攻杰");
+        exampleMapper.delete(exampleQw);
     }
 }

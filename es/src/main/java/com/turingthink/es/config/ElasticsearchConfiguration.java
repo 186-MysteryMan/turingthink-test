@@ -20,6 +20,7 @@ import java.util.List;
 /**
  * @author GongJie Sheng
  * @date 2023/1/10 0:44
+ * 从es读取时间转换成localDateTime
  */
 @Configuration
 public class ElasticsearchConfiguration extends ElasticsearchConfigurationSupport {

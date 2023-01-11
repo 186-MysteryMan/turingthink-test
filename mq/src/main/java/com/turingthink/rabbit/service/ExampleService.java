@@ -18,4 +18,9 @@ public interface ExampleService {
      * @return
      */
     List<RabbitMqDTO> exampleList();
+
+    /**
+     * 删除example自己的数据
+     */
+    void deleteExample();
 }

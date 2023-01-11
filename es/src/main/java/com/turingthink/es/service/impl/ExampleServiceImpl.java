@@ -55,11 +55,13 @@ public class ExampleServiceImpl implements ExampleService {
 //            -p9300:9300 \
 //            -e ES_JAVA_OPTS="-Xms1024m -Xmx1024m" \
 //            -e "discovery.type=single-node" \
-//            -v /usr/project/elasticsearch/elk/es8.5.1/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml \
 //    elasticsearch:8.5.1
-    //    docker exec -it es8.5.1 /bin/bash
+//            -v /usr/project/elasticsearch/elk/es8.5.1/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml \
+//    //    docker exec -it es8.5.1 /bin/bash
+//            /usr/share/elasticsearch/config/certs/elastic-stack-ca.p12
     @Override
     public void deleteExample() {
+        rabbitMqService.deleteExample();
         exampleRepository.deleteByCreator("盛攻杰");
     }
 }
