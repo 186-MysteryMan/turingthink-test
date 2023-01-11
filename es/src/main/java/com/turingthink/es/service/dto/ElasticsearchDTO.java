@@ -1,7 +1,7 @@
 package com.turingthink.es.service.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.turingthink.es.dao.entity.ExampleEntity;
+import com.turingthink.es.dao.entity.ExampleDocument;
 import com.turingthink.es.enums.ExampleTypeEnum;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
@@ -71,22 +71,22 @@ public class ElasticsearchDTO {
      */
     private Boolean deleted;
 
-    public static List<ElasticsearchDTO> convert(List<ExampleEntity> exampleEntityList) {
+    public static List<ElasticsearchDTO> convert(List<ExampleDocument> exampleDocumentList) {
         List<ElasticsearchDTO> elasticsearchList = new ArrayList<>();
-        for (ExampleEntity exampleEntity : exampleEntityList) {
+        for (ExampleDocument exampleDocument : exampleDocumentList) {
             ElasticsearchDTO elasticsearchDTO = new ElasticsearchDTO();
-            BeanUtils.copyProperties(exampleEntity, elasticsearchDTO);
+            BeanUtils.copyProperties(exampleDocument, elasticsearchDTO);
             elasticsearchList.add(elasticsearchDTO);
         }
         return elasticsearchList;
     }
 
-    public static List<ExampleEntity> convertToExample(List<ElasticsearchDTO> list) {
-        List<ExampleEntity> exampleList = new ArrayList<>();
+    public static List<ExampleDocument> convertToExample(List<ElasticsearchDTO> list) {
+        List<ExampleDocument> exampleList = new ArrayList<>();
         for (ElasticsearchDTO elasticsearchDTO : list) {
-            ExampleEntity exampleEntity = new ExampleEntity();
-            BeanUtils.copyProperties(elasticsearchDTO, exampleEntity);
-            exampleList.add(exampleEntity);
+            ExampleDocument exampleDocument = new ExampleDocument();
+            BeanUtils.copyProperties(elasticsearchDTO, exampleDocument);
+            exampleList.add(exampleDocument);
         }
         return exampleList;
     }

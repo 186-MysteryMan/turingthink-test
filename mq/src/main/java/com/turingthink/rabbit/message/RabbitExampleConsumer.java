@@ -29,9 +29,9 @@ public class RabbitExampleConsumer {
         ExampleEntity exampleEntity = new ExampleEntity();
         exampleEntity = switch (type) {
             case DEV -> exampleEntity.setName("开发").setDescription("这是开发环境");
-            case TEST -> exampleEntity.setName("测试").setDescription("这是开发环境");
-            case PROD -> exampleEntity.setName("生产").setDescription("这是开发环境");
-            default -> exampleEntity.setName("未知").setDescription("这是开发环境");
+            case TEST -> exampleEntity.setName("测试").setDescription("这是测试环境");
+            case PROD -> exampleEntity.setName("生产").setDescription("这是生产环境");
+            default -> exampleEntity.setName("未知").setDescription("未知");
         };
         exampleEntity.setType(type).setCreator("盛攻杰");
         exampleMapper.insert(exampleEntity);

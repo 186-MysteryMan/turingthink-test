@@ -10,8 +10,20 @@ import java.util.List;
  */
 public interface ExampleService {
     /**
-     * example列表数据
+     * 将mysql的example数据转移到es
      * @return
      */
-    List<ElasticsearchDTO> exampleList();
+    void addExample();
+
+    /**
+     * 查询example列表
+     * @param dto
+     * @return
+     */
+    List<ElasticsearchDTO> exampleList(ElasticsearchDTO dto);
+
+    /**
+     * 删除自己的数据
+     */
+    void deleteExample();
 }

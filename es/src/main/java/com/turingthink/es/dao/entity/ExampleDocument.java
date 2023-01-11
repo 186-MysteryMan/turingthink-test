@@ -1,9 +1,10 @@
 package com.turingthink.es.dao.entity;
 
 import com.turingthink.es.enums.ExampleTypeEnum;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
@@ -11,6 +12,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -22,7 +24,10 @@ import java.time.LocalDateTime;
  */
 @Document(indexName="example")
 @Data
-public class ExampleEntity implements Serializable {
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class ExampleDocument implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -35,25 +40,25 @@ public class ExampleEntity implements Serializable {
     /**
      * 创建人名称
      */
-    @Field(type = FieldType.Keyword)
+    @Field(type = FieldType.Text)
     private String creator;
 
     /**
      * 名称
      */
-    @Field(type = FieldType.Keyword)
+    @Field(type = FieldType.Text)
     private String name;
 
     /**
      * 描述
      */
-    @Field(type = FieldType.Keyword)
+    @Field(type = FieldType.Text, searchAnalyzer = "ik_smart", analyzer = "ik_smart")
     private String description;
 
     /**
      * 类型：默认0=未知；1=开发；2=测试；3=生产
      */
-    @Field(type = FieldType.Keyword)
+    @Field(type = FieldType.Text)
     private ExampleTypeEnum type;
 
     /**

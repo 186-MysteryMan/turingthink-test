@@ -21,15 +21,6 @@ import java.util.List;
 public class ElasticsearchVO {
 
     @Data
-    public static class DelayQueueExampleForm {
-        @ApiModelProperty(value = "类型：默认UNKNOWN=未知；DEV=开发；TEST=测试；PROD=生产", example = "DEV")
-        private ExampleTypeEnum type;
-
-        @ApiModelProperty(value = "延迟秒数", example = "1")
-        private Integer second;
-    }
-
-    @Data
     public static class ExampleListVO {
 
         @ApiModelProperty(value = "主键ID", example = "主键ID")
@@ -41,7 +32,7 @@ public class ElasticsearchVO {
         @ApiModelProperty(value = "名称", example = "名称")
         private String name;
 
-        @ApiModelProperty(value = "描述", example = "描述")
+        @ApiModelProperty(value = "描述", example = "这是开发环境")
         private String description;
 
         @ApiModelProperty(value = "类型：默认UNKNOWN=未知；DEV=开发；TEST=测试；PROD=生产", example = "DEV")
@@ -69,6 +60,21 @@ public class ElasticsearchVO {
                 exampleList.add(exampleListVO);
             }
             return exampleList;
+        }
+    }
+
+    @Data
+    public static class AddExampleForm {
+        @ApiModelProperty(value = "类型：默认UNKNOWN=未知；DEV=开发；TEST=测试；PROD=生产", example = "DEV")
+        private ExampleTypeEnum type;
+
+        @ApiModelProperty(value = "描述", example = "这是开发环境")
+        private String description;
+
+        public ElasticsearchDTO convert() {
+            ElasticsearchDTO elasticsearchDTO = new ElasticsearchDTO();
+            BeanUtils.copyProperties(this, elasticsearchDTO);
+            return elasticsearchDTO;
         }
     }
 }
