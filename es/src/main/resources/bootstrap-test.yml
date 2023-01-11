@@ -4,8 +4,9 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 spring:
   elasticsearch:
-    uris:
-      - http://39.101.137.246:9200
-    username: elastic
-    password: turing12345
-    connection-timeout: 5000
+    rest:
+      uris:
+        - http://39.101.137.246:9200
+      username: elastic
+      password: turing12345
+      connection-timeout: 5000

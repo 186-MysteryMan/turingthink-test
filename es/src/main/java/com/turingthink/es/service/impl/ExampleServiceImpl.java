@@ -1,5 +1,6 @@
 package com.turingthink.es.service.impl;
 
+import com.turingthink.es.dao.entity.ExampleEntity;
 import com.turingthink.es.dao.mapper.ExampleRepository;
 import com.turingthink.es.service.ExampleService;
 import com.turingthink.es.service.RabbitMqService;
@@ -23,7 +24,9 @@ public class ExampleServiceImpl implements ExampleService {
 
     @Override
     public List<ElasticsearchDTO> exampleList() {
-        List<ElasticsearchDTO> exampleListVOS = rabbitMqService.exampleList();
-        return exampleListVOS;
+        List<ElasticsearchDTO> exampleList = rabbitMqService.exampleList();
+        List<ExampleEntity> exampleEntities = ElasticsearchDTO.convertToExample(exampleList);
+        exampleRepository.saveAll(exampleEntities);
+        return exampleList;
     }
 }

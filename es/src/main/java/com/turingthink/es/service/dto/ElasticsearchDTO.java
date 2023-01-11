@@ -1,7 +1,8 @@
 package com.turingthink.es.service.dto;
 
-import com.turingthink.rabbit.dao.entity.ExampleEntity;
-import com.turingthink.rabbit.enums.ExampleTypeEnum;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.turingthink.es.dao.entity.ExampleEntity;
+import com.turingthink.es.enums.ExampleTypeEnum;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
@@ -17,6 +18,7 @@ import java.util.List;
  */
 @Data
 public class ElasticsearchDTO {
+    @JsonFormat
     /**
      * 主键ID
      */
@@ -50,11 +52,13 @@ public class ElasticsearchDTO {
     /**
      * 创建时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
 
     /**
      * 修改时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;
 
     /**
@@ -67,12 +71,22 @@ public class ElasticsearchDTO {
      */
     private Boolean deleted;
 
-    public static List<RabbitMqDTO> convert(List<ExampleEntity> exampleEntityList) {
-        List<RabbitMqDTO> exampleList = new ArrayList<>();
+    public static List<ElasticsearchDTO> convert(List<ExampleEntity> exampleEntityList) {
+        List<ElasticsearchDTO> elasticsearchList = new ArrayList<>();
         for (ExampleEntity exampleEntity : exampleEntityList) {
-            RabbitMqDTO rabbitMqDTO = new RabbitMqDTO();
-            BeanUtils.copyProperties(exampleEntity, rabbitMqDTO);
-            exampleList.add(rabbitMqDTO);
+            ElasticsearchDTO elasticsearchDTO = new ElasticsearchDTO();
+            BeanUtils.copyProperties(exampleEntity, elasticsearchDTO);
+            elasticsearchList.add(elasticsearchDTO);
+        }
+        return elasticsearchList;
+    }
+
+    public static List<ExampleEntity> convertToExample(List<ElasticsearchDTO> list) {
+        List<ExampleEntity> exampleList = new ArrayList<>();
+        for (ElasticsearchDTO elasticsearchDTO : list) {
+            ExampleEntity exampleEntity = new ExampleEntity();
+            BeanUtils.copyProperties(elasticsearchDTO, exampleEntity);
+            exampleList.add(exampleEntity);
         }
         return exampleList;
     }
