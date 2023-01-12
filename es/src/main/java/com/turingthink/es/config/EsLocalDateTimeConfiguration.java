@@ -20,10 +20,9 @@ import java.util.List;
 /**
  * @author GongJie Sheng
  * @date 2023/1/10 0:44
- * 从es读取时间转换成localDateTime
  */
 @Configuration
-public class ElasticsearchConfiguration extends ElasticsearchConfigurationSupport {
+public class EsLocalDateTimeConfiguration extends ElasticsearchConfigurationSupport {
 
     @Bean
     @Override
@@ -67,8 +66,9 @@ public class ElasticsearchConfiguration extends ElasticsearchConfigurationSuppor
 
         @Override
         public LocalDateTime convert(String source) {
-            DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            return LocalDateTime.parse(source, df);
+            DateTimeFormatter df =
+                    DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS+00:00");
+            return LocalDateTime.parse(source, df).plusHours(8);
         }
 
     }

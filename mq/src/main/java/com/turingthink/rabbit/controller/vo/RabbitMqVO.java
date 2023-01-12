@@ -57,10 +57,12 @@ public class RabbitMqVO {
 
         @ApiModelProperty(value = "创建时间", example = "2023-01-10 17:12:31")
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         private LocalDateTime createTime;
 
         @ApiModelProperty(value = "修改时间", example = "2023-01-10 17:12:31")
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         private LocalDateTime updateTime;
 
         @ApiModelProperty(value = "是否可用：默认1=可用；0=不可用", example = "true")

@@ -5,6 +5,7 @@ import com.turingthink.es.dao.entity.ExampleDocument;
 import com.turingthink.es.enums.ExampleTypeEnum;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -17,7 +18,8 @@ import java.util.List;
  * @description
  */
 @Data
-public class ElasticsearchDTO {
+public class
+ElasticsearchDTO {
     @JsonFormat
     /**
      * 主键ID
@@ -52,13 +54,15 @@ public class ElasticsearchDTO {
     /**
      * 创建时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
 
     /**
      * 修改时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;
 
     /**

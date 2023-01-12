@@ -1,5 +1,6 @@
 package com.turingthink.rabbit.controller;
 
+import com.turingthink.rabbit.common.R;
 import com.turingthink.rabbit.controller.vo.RabbitMqVO;
 import com.turingthink.rabbit.service.ExampleService;
 import com.turingthink.rabbit.service.RabbitService;
@@ -27,21 +28,22 @@ public class RabbitMqController {
 
     @PostMapping("/v1/delayQueueExample")
     @ApiOperation(value = "延迟队列并根据传入类型插入对应数据")
-    public String delayQueueExample(@Validated @RequestBody RabbitMqVO.DelayQueueExampleForm vo) {
+    public R<?> delayQueueExample(@Validated @RequestBody RabbitMqVO.DelayQueueExampleForm vo) {
         rabbitService.delayQueueExample(vo.convert());
-        return "成功";
+        return R.success();
     }
 
     @GetMapping("/v1/exampleList")
     @ApiOperation(value = "example列表数据")
-    public List<RabbitMqVO.ExampleListVO> exampleList() {
+    public R<List<RabbitMqVO.ExampleListVO>> exampleList() {
         List<RabbitMqDTO> rabbitMqList = exampleService.exampleList();
-        return RabbitMqVO.ExampleListVO.convert(rabbitMqList);
+        return R.success(RabbitMqVO.ExampleListVO.convert(rabbitMqList));
     }
 
     @DeleteMapping("/v1/deleteExample")
     @ApiOperation(value = "删除example自己的数据")
-    public void deleteExample() {
+    public R<?> deleteExample() {
         exampleService.deleteExample();
+        return R.success();
     }
 }

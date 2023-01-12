@@ -1,4 +1,4 @@
-package com.turingthink.rabbit.config;
+package com.turingthink.es.config;
 
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,8 +34,8 @@ public class SwaggerConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .enable(enable)
                 .apiInfo(new ApiInfoBuilder()
-                        .title("mq api")
-                        .description("mq api")
+                        .title("es api")
+                        .description("es api")
                         .termsOfServiceUrl("http://www.turingthink.com/")
                         .contact(new Contact("1", "1", "1"))
                         .version("0.0.1")
@@ -45,6 +45,6 @@ public class SwaggerConfiguration {
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build()
-                .groupName("mq接口");
+                .groupName("es接口");
     }
 }

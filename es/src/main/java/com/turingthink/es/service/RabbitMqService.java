@@ -1,5 +1,6 @@
 package com.turingthink.es.service;
 
+import com.turingthink.es.common.R;
 import com.turingthink.es.service.dto.ElasticsearchDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
@@ -22,11 +23,13 @@ public interface RabbitMqService {
      * @return
      */
     @GetMapping("/v1/exampleList")
-    List<ElasticsearchDTO> exampleList();
+    R<List<ElasticsearchDTO>> exampleList();
 
     /**
      * 删除example自己的数据
+     *
+     * @return
      */
     @DeleteMapping("/v1/deleteExample")
-    void deleteExample();
+    R<?> deleteExample();
 }

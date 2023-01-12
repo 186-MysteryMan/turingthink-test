@@ -18,11 +18,11 @@
     </properties>
 
     <dependencies>
-        <!--nacos配置中心-->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
-<!--        </dependency>-->
+<!--        nacos配置中心-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
         <!--mysql数据库连接器-->
         <dependency>
             <groupId>mysql</groupId>
@@ -52,7 +52,7 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.5.0</version>
+            <version>3.5.3.1</version>
         </dependency>
         <!--API文档+调试工具Swagger，里面包含了guava-->
         <dependency>

@@ -51,7 +51,7 @@ public interface ExampleRepository extends ElasticsearchRepository<ExampleDocume
      * @param creator
      * @return
      */
-    List<ExampleDocument> deleteByCreator(String creator);
+    void deleteByCreator(String creator);
 
     /**
      * 通过描述模糊

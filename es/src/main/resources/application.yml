@@ -1,0 +1,16 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: es
+  profiles:
+    active: test
+  cloud:
+    nacos:
+      config:
+        server-addr: 39.101.137.246:8848
+        username: nacos
+        password: turing12345
+  config:
+    import:
+      - nacos:shenggongjie-${spring.application.name}-${spring.profiles.active}.yml

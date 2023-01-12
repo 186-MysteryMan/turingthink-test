@@ -44,25 +44,15 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--swagger-models的1.5.20版本，没有判断model中在没有设置example时是否为空，
-            造成java.lang.NumberFormatException: For input string: ""，
-            通过版本管理，限制swagger-models的版本为1.5.21版本即可-->
-<!--            <dependency>-->
-<!--                &lt;!&ndash; https://mvnrepository.com/artifact/io.swagger/swagger-models &ndash;&gt;-->
-<!--                <groupId>io.swagger</groupId>-->
-<!--                <artifactId>swagger-models</artifactId>-->
-<!--                <version>2.0.0-rc2</version>-->
-<!--                <scope>compile</scope>-->
-<!--            </dependency>-->
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
         <!--2.4以上版本需要增加读取bootstrap依赖-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bootstrap</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-bootstrap</artifactId>-->
+<!--        </dependency>-->
         <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
