@@ -1,6 +1,6 @@
 
 # 设置本镜像需要使用的基础镜像
-FROM  java:17
+FROM  openjdk:17-oracle
   
 # 把jar包添加到镜像中
 ADD eureka/target/eureka-1.0-SNAPSHOT.jar /app.jar
