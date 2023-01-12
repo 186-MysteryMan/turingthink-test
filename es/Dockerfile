@@ -1,6 +1,6 @@
 
 # 设置本镜像需要使用的基础镜像
-FROM  openjdk:17-2022
+FROM  openjdk:17-oracle
   
 # 把jar包添加到镜像中
 ADD es/target/es-1.0-SNAPSHOT.jar /app.jar
