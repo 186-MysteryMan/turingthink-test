@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
  * @time: 2019-01-08 0008 下午 11:17
  * @description:
  */
-@Configuration
+//@Configuration
 @EnableOpenApi
 @Profile({"dev", "test"})
 public class SwaggerConfiguration {
