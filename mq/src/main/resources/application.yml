@@ -2,7 +2,7 @@ server:
   port: 8003
 spring:
   application:
-    name: mq
+    name: shenggongjie-mq
   profiles:
     active: test
   cloud:
@@ -11,6 +11,10 @@ spring:
         server-addr: 39.101.137.246:8848
         username: nacos
         password: turing12345
+      discovery:
+        server-addr: 39.101.137.246:8848
+        username: nacos
+        password: turing12345
   config:
     import:
-      - nacos:shenggongjie-${spring.application.name}-${spring.profiles.active}.yml
+      - nacos:${spring.application.name}-${spring.profiles.active}.yml

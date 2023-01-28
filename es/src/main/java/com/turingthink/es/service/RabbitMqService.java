@@ -13,7 +13,7 @@ import java.util.List;
  * @author GongJie Sheng
  * @date 2023/1/10 0:48
  */
-@FeignClient(value = "mq")
+@FeignClient(value = "shenggongjie-mq")
 @Service
 public interface RabbitMqService {
 
