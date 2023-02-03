@@ -16,10 +16,7 @@ import org.springframework.data.elasticsearch.client.elc.NativeQueryBuilder;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.SearchHit;
 import org.springframework.data.elasticsearch.core.SearchHits;
-import org.springframework.data.elasticsearch.core.query.BaseQuery;
-import org.springframework.data.elasticsearch.core.query.Criteria;
-import org.springframework.data.elasticsearch.core.query.CriteriaQuery;
-import org.springframework.data.elasticsearch.core.query.Query;
+import org.springframework.data.elasticsearch.core.query.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -55,10 +52,10 @@ public class ExampleServiceImpl implements ExampleService {
     public List<ElasticsearchDTO> exampleList(ElasticsearchDTO dto) {
         Criteria criteria = new Criteria().and("creator").is("盛攻杰");
         if (StringUtils.isNotBlank(dto.getDescription())){
-            criteria.and("description").is(dto.getDescription());
+            criteria = criteria.and("description").is(dto.getDescription());
         }
         if (Objects.nonNull(dto.getType())){
-            criteria.and("type").is(dto.getType());
+            criteria = criteria.and("type").is(dto.getType());
         }
         Query query = new CriteriaQuery(criteria);
         SearchHits<ExampleDocument> search = elasticsearchTemplate.search(query, ExampleDocument.class);
