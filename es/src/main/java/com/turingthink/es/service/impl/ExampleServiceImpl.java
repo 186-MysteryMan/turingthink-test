@@ -1,6 +1,10 @@
 package com.turingthink.es.service.impl;
 
 import co.elastic.clients.elasticsearch._types.aggregations.Aggregation;
+import co.elastic.clients.elasticsearch._types.aggregations.AggregationBuilders;
+import co.elastic.clients.elasticsearch._types.aggregations.AggregationVariant;
+import co.elastic.clients.elasticsearch._types.query_dsl.*;
+import co.elastic.clients.util.ObjectBuilder;
 import com.turingthink.es.common.R;
 import com.turingthink.es.dao.entity.ExampleDocument;
 import com.turingthink.es.dao.mapper.ExampleRepository;
@@ -13,10 +17,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.client.elc.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.client.elc.NativeQuery;
 import org.springframework.data.elasticsearch.client.elc.NativeQueryBuilder;
+import org.springframework.data.elasticsearch.client.elc.QueryBuilders;
+import org.springframework.data.elasticsearch.client.erhlc.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.SearchHit;
 import org.springframework.data.elasticsearch.core.SearchHits;
 import org.springframework.data.elasticsearch.core.query.*;
+import org.springframework.data.elasticsearch.core.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -50,14 +57,16 @@ public class ExampleServiceImpl implements ExampleService {
 
     @Override
     public List<ElasticsearchDTO> exampleList(ElasticsearchDTO dto) {
-        Criteria criteria = new Criteria().and("creator").is("盛攻杰");
-        if (StringUtils.isNotBlank(dto.getDescription())){
-            criteria = criteria.and("description").is(dto.getDescription());
-        }
-        if (Objects.nonNull(dto.getType())){
-            criteria = criteria.and("type").is(dto.getType());
-        }
-        Query query = new CriteriaQuery(criteria);
+        Query query = NativeQuery.builder()
+                .withQuery(q1 -> q1.bool(b -> {
+                    if (StringUtils.isNotBlank(dto.getDescription())) {
+                        b.filter(m -> m.match(ma -> ma.field("description").query(dto.getDescription())));
+                    }
+                    if (Objects.nonNull(dto.getType())) {
+                        b.filter(m -> m.match(ma -> ma.field("type").query(dto.getType().getValue())));
+                    }
+                    return b.filter(m -> m.match(ma -> ma.field("creator").query("盛攻杰")));
+                })).build();
         SearchHits<ExampleDocument> search = elasticsearchTemplate.search(query, ExampleDocument.class);
         List<SearchHit<ExampleDocument>> searchHits = search.getSearchHits();
         if (!CollectionUtils.isEmpty(searchHits)) {
