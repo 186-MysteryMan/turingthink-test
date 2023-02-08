@@ -1,7 +1,7 @@
 package com.turingthink.rabbit.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.turingthink.rabbit.dao.entity.ExampleEntity;
+import com.turingthink.rabbit.dao.entity.OrderEntity;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
  * @author GongJie Sheng
  * @since 2022-05-19
  */
-public interface ExampleMapper extends BaseMapper<ExampleEntity> {
+public interface OrderMapper extends BaseMapper<OrderEntity> {
 
 }

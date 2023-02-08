@@ -3,6 +3,7 @@ package com.turingthink.rabbit.controller.vo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.turingthink.rabbit.enums.ExampleTypeEnum;
 import com.turingthink.rabbit.service.dto.RabbitMqDTO;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
@@ -20,9 +21,11 @@ import java.util.List;
  * @description
  */
 @Data
+@ApiModel
 public class RabbitMqVO {
 
     @Data
+    @ApiModel
     public static class DelayQueueExampleForm {
         @ApiModelProperty(value = "类型：默认UNKNOWN=未知；DEV=开发；TEST=测试；PROD=生产", example = "DEV")
         private ExampleTypeEnum type;
@@ -38,6 +41,7 @@ public class RabbitMqVO {
     }
 
     @Data
+    @ApiModel
     public static class ExampleListVO {
 
         @ApiModelProperty(value = "主键ID", example = "主键ID")
