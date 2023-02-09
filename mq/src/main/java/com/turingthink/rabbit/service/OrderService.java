@@ -14,4 +14,10 @@ public interface OrderService {
      * @param orderDTO
      */
     void createOrder(OrderDTO orderDTO);
+
+    /**
+     * 取消订单
+     * @param orderId
+     */
+    void cancelOrder(Long orderId);
 }

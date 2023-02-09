@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.turingthink.rabbit.enums.ExampleTypeEnum;
+import com.turingthink.rabbit.enums.OrderStatusEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -36,6 +36,11 @@ public class OrderEntity implements Serializable {
     private Long uid;
 
     /**
+     * 商品ID
+     */
+    private Long goodsId;
+
+    /**
      * 商品名称
      */
     private String goodsName;
@@ -49,6 +54,11 @@ public class OrderEntity implements Serializable {
      * 下单数量
      */
     private Integer count;
+
+    /**
+     * 订单状态：默认SUCCESS=下单成功；CANCEL=取消订单
+     */
+    private OrderStatusEnum status;
 
     /**
      * 创建时间

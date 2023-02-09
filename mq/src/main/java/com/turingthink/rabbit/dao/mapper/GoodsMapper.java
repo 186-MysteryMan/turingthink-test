@@ -25,4 +25,14 @@ public interface GoodsMapper extends BaseMapper<GoodsEntity> {
      */
     @Update("update t_goods set stock = stock - #{count} where stock > #{count} and id = #{goodsId}")
     boolean reduceStock(@Param("goodsId") Long goodsId, @Param("count") Integer count);
+
+    /**
+     * 增加库存
+     *
+     * @param goodsId
+     * @param count
+     * @return
+     */
+    @Update("update t_goods set stock = stock + #{count} where id = #{goodsId}")
+    void restoreStock(@Param("goodsId") Long goodsId, @Param("count") Integer count);
 }
