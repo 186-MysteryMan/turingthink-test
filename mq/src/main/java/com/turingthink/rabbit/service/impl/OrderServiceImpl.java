@@ -2,6 +2,8 @@ package com.turingthink.rabbit.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.turingthink.rabbit.common.R;
+import com.turingthink.rabbit.common.exception.CustomException;
 import com.turingthink.rabbit.dao.entity.GoodsEntity;
 import com.turingthink.rabbit.dao.entity.OrderEntity;
 import com.turingthink.rabbit.dao.mapper.GoodsMapper;
@@ -43,8 +45,11 @@ public class OrderServiceImpl implements OrderService {
             OrderEntity orderEntity = new OrderEntity();
             orderEntity.setFee(fee);
             orderEntity.setGoodsName(goodsEntity.getName());
+            orderEntity.setGoodsId(goodsId);
             orderEntity.setCount(count);
             orderMapper.insert(orderEntity);
+        }else {
+            throw new CustomException(R.STOCK_NOT_ENOUGH);
         }
     }
 
@@ -62,6 +67,8 @@ public class OrderServiceImpl implements OrderService {
             Integer count = orderEntity.getCount();
             Long goodsId = orderEntity.getGoodsId();
             goodsMapper.restoreStock(goodsId, count);
+        }else {
+            throw new CustomException(R.ORDER_HAS_BEEN_CANCELED);
         }
     }
 }

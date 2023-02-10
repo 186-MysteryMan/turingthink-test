@@ -1,6 +1,6 @@
 package com.turingthink.es.controller;
 
-import com.turingthink.es.common.R;
+import com.turingthink.rabbit.common.R;
 import com.turingthink.es.controller.vo.ElasticsearchVO;
 import com.turingthink.es.service.ExampleService;
 import com.turingthink.es.service.dto.ElasticsearchDTO;

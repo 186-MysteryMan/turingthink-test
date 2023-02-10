@@ -1,6 +1,6 @@
 package com.turingthink.es.service;
 
-import com.turingthink.es.common.R;
+import com.turingthink.rabbit.common.R;
 import com.turingthink.es.service.dto.ElasticsearchDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
