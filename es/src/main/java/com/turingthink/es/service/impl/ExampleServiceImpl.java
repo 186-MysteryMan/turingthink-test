@@ -1,6 +1,6 @@
 package com.turingthink.es.service.impl;
 
-import com.turingthink.rabbit.common.R;
+import com.turingthink.es.common.R;
 import com.turingthink.es.dao.entity.ExampleDocument;
 import com.turingthink.es.dao.mapper.ExampleRepository;
 import com.turingthink.es.service.ExampleService;
