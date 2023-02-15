@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class ElasticsearchController {
     @Autowired
     private ExampleService exampleService;
 
-    @GetMapping("/v1/addExample")
+    @PostMapping("/v1/addExample")
     @ApiOperation(value = "将mysql的example数据转移到es")
     public R<?> addExample() {
         exampleService.addExample();
