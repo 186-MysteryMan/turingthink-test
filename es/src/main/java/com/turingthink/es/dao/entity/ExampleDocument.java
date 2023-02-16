@@ -71,6 +71,7 @@ public class ExampleDocument implements Serializable {
     /**
      * 创建时间
      */
+    @Field(type = FieldType.Date, format = DateFormat.date_hour_minute_second_millis)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime createTime;
@@ -78,6 +79,7 @@ public class ExampleDocument implements Serializable {
     /**
      * 修改时间
      */
+    @Field(type = FieldType.Date, format = DateFormat.date_hour_minute_second_millis)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime updateTime;
